@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Dots:wght@400..700&family=Edu+AU+VIC+WA+NT+Guides:wght@400..700&family=Roboto+Slab:wght@100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  left: 0;
+  overflow-x: hidden;
+  font-family: "Roboto Slab", serif;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 30px;
+  background-color: #77B3D4;
+  color: #fff;
+  font-weight: 300;
+}
+
+.nav-left {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.nav-left,
+.nav-right {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-left a,
+.nav-right a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: normal;
+  transition: color 0.3s ease;
+}
+
+.nav-left a:hover,
+.nav-right a:hover {
+  color: #c0f8ff;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 10px 20px;
+  justify-content: space-between;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo {
+  width: 50px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.title {
+  font-size: 1.5rem;
+  color: #007acc;
+  font-weight: normal;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  max-width: 200px;
+  width: 100%;
+  border-bottom: 2px solid #77b3d4;
+  padding: 5px 0;
+  margin-right: 5%;
+}
+
+.search-label {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  color: #77b3d4;
+}
+
+.search-container:hover {
+  cursor: pointer;
+}
+
+.search-label:hover {
+  cursor: pointer;
+}
+
+.search-icon {
+  width: 16px;
+  height: 16px;
+  background-color: transparent;
+  mask: url('search-icon.svg') no-repeat center;
+  -webkit-mask: url('search-icon.svg') no-repeat center;
+  mask-size: cover;
+  -webkit-mask-size: cover;
+  background-color: #77b3d4;
+}
+
+.search-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  color: #007acc;
+  font-family: "Rubik", sans-serif;
+}
+
+.notification-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.notification-icon {
+  width: 20px;
+  height: 20px;
+  mask: url('bell-icon.svg') no-repeat center;
+  -webkit-mask: url('bell-icon.svg') no-repeat center;
+  mask-size: cover;
+  -webkit-mask-size: cover;
+}
+
+.footer {
+  text-align: center;
+  padding: 10px;
+  background-color: #77B3D4;
+  color: white;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
