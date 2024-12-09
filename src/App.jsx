@@ -3,7 +3,7 @@ import { Header } from './Post';
 import { Searcher } from './Search';
 import './styles.css';
 
-export function App() {
+export default function App() {
   return (
     <>
       <Header />
