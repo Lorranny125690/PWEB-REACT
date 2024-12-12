@@ -86,7 +86,6 @@ main {
   margin-right: 5%;
   color: #77b3d4;
   flex-direction: column;
-  border-bottom: 2px solid #77b3d4;
 }
 
 .Pesquisar {
@@ -95,6 +94,7 @@ main {
   gap: 5%;
   width: 100%;
   padding: 5px 0;
+  border-bottom: 2px solid #77b3d4;
 }
 
 .search-icon {
@@ -124,9 +124,12 @@ main {
 }
 
 .notification-icon {
-  width: 20px;
-  height: 20px;
-  background-image: url('bell-icon.svg') no-repeat center;
+  width: 30px;
+  height: 30px;
+  background-image: url('4226663.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
 }
 
 .footer {
