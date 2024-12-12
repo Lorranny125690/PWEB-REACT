@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Dots:wght@400..700&family=Edu+AU+VIC+WA+NT+Guides:wght@400..700&family=Roboto+Slab:wght@100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 
+main {
+  display: flex;
+  flex-direction: column;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -49,6 +54,7 @@
   background-color: #ffffff;
   padding: 10px 20px;
   justify-content: space-between;
+  height: auto;
 }
 
 .logo-container {
@@ -72,41 +78,33 @@
 .search-container {
   display: flex;
   align-items: center;
-  max-width: 200px;
+  width: 15%;
+  margin-right: 5%;
+  color: #77b3d4;
+  flex-direction: column;
+}
+
+.Pesquisar {
+  display: flex;
+  flex-direction: row;
+  gap: 5%;
   width: 100%;
   border-bottom: 2px solid #77b3d4;
   padding: 5px 0;
-  margin-right: 5%;
-}
-
-.search-label {
-  display: flex;
-  align-items: center;
-  font-size: 1rem;
-  color: #77b3d4;
-}
-
-.search-container:hover {
-  cursor: pointer;
-}
-
-.search-label:hover {
-  cursor: pointer;
 }
 
 .search-icon {
   width: 16px;
   height: 16px;
   background-color: transparent;
-  mask: url('search-icon.svg') no-repeat center;
-  -webkit-mask: url('search-icon.svg') no-repeat center;
+  mask: url('Search_icon.svg.png') no-repeat center;
+  -webkit-mask: url('Search_icon.svg.png') no-repeat center;
   mask-size: cover;
   -webkit-mask-size: cover;
   background-color: #77b3d4;
 }
 
 .search-input {
-  flex: 1;
   border: none;
   outline: none;
   font-size: 1rem;
@@ -124,10 +122,7 @@
 .notification-icon {
   width: 20px;
   height: 20px;
-  mask: url('bell-icon.svg') no-repeat center;
-  -webkit-mask: url('bell-icon.svg') no-repeat center;
-  mask-size: cover;
-  -webkit-mask-size: cover;
+  background-image: url('bell-icon.svg') no-repeat center;
 }
 
 .footer {
@@ -138,4 +133,23 @@
   position: fixed;
   bottom: 0;
   width: 100%;
+}
+
+.results-container {
+  background-color: rgb(255, 255, 255);
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all .5 ease-in;
+}
+
+.result-item {
+  padding: 10px;
+  color: #007acc;
+  cursor: pointer;
+  transition: 0.5s all;
+}
+
+.result-item:hover {
+  background-color: #235a86;
 }

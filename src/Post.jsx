@@ -15,6 +15,5 @@ export function Header() {
             <a href="#signup">Sign Up</a>
           </div>
     </header>
-
   )
 }
