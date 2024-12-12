@@ -1,11 +1,7 @@
-import Icon from './Icon.png';
 import React, { useState } from 'react';
+import Icon from './Icon.png';
 
-const filter = [
-  'comunidade',
-  'filmes',
-  'séries',
-];
+const filter = ['comunidade', 'filmes', 'séries'];
 
 export function Searcher() {
   const [busca, setBusca] = useState('');
@@ -17,36 +13,48 @@ export function Searcher() {
 
   return (
     <div className="container">
-      <div className='Super-container'><div className="logo-container">
-        <img src={Icon} alt="Luluzinha Logo" className="logo" />
-        <h1 className="title">LULUZINHA</h1></div>
+      {/* Logo e título */}
+      <div className="Super-container">
+        <div className="logo-container">
+          <img src={Icon} alt="Luluzinha Logo" className="logo" />
+          <h1 className="title">LULUZINHA</h1>
+        </div>
       </div>
+
+      {/* Barra de pesquisa */}
       <div className="search-container">
-        <div className='Pesquisar'>
-          <div className="search-icon"></div>
+        <div className="Pesquisar">
+          {/* Ícone de pesquisa */}
+          <div className="search-icon">
+            <i className="fa fa-search"></i> 
+          </div>
           <input
-          id="search-input"
-          type="text"
-          value={busca}
-          placeholder="Pesquisar"
-          onChange={(ev) => setBusca(ev.target.value)}
-          onFocus={() => setFocus(true)}
-          onBlur={() => setTimeout(() => setFocus(false), 200)}
-          className="search-input"
+            id="search-input"
+            type="text"
+            value={busca}
+            placeholder="Pesquisar"
+            onChange={(ev) => setBusca(ev.target.value)}
+            onFocus={() => setFocus(true)}
+            onBlur={() => setFocus(false)}
+            className="search-input"
           />
         </div>
-        <div>{focus && filterFiltrados.length > 0 && (
-        <div className="results-container">
-          {filterFiltrados.map((item, index) => (
-            <div key={index} className="result-item">
-              {item}
-            </div>
-          ))}
-        </div>
-        )}</div>
+
+        {/* Resultados filtrados */}
+        {focus && filterFiltrados.length > 0 && (
+          <div className="results-container">
+            {filterFiltrados.map((item, index) => (
+              <div key={index} className="result-item">
+                {item}
+              </div>
+            ))}
+          </div>
+        )}
       </div>
+
+      {/* Ícone de notificações */}
       <div className="notification-container">
-        <i className="notification-icon"></i>
+        <i className="fa fa-bell notification-icon"></i>
       </div>
     </div>
   );

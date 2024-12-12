@@ -86,7 +86,7 @@ main {
   margin-right: 5%;
   color: #77b3d4;
   flex-direction: column;
-  height: 60px;
+  border-bottom: 2px solid #77b3d4;
 }
 
 .Pesquisar {
@@ -95,7 +95,6 @@ main {
   gap: 5%;
   width: 100%;
   padding: 5px 0;
-  position: relative;
 }
 
 .search-icon {
@@ -110,13 +109,11 @@ main {
 }
 
 .search-input {
-  position: absolute;
   border: none;
   outline: none;
   font-size: 1rem;
   color: #007acc;
   font-family: "Rubik", sans-serif;
-  border-bottom: 2px solid #77b3d4;
 }
 
 .notification-container {
