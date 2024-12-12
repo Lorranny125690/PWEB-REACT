@@ -86,6 +86,8 @@ main {
   margin-right: 5%;
   color: #77b3d4;
   flex-direction: column;
+  border-bottom: 2px solid #77b3d4;
+  position: relative; /* Necessário para posicionar os resultados */
 }
 
 .Pesquisar {
@@ -143,12 +145,15 @@ main {
 }
 
 .results-container {
+  left: 0;
+  width: 100%;
   background-color: rgb(255, 255, 255);
   border: 1px solid #ddd;
   border-radius: 5px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  transition: all .5 ease-in;
+  z-index: 10;
 }
+
 
 .result-item {
   padding: 10px;
@@ -159,4 +164,16 @@ main {
 
 .result-item:hover {
   background-color: #235a86;
+  color: #fff;
+}
+
+.notification-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 8px;
+  height: 8px;
+  background-color: red;
+  border-radius: 50%;
 }
