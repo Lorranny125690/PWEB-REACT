@@ -26,7 +26,6 @@ export function Searcher() {
         <div className="Pesquisar">
           {/* Ícone de pesquisa */}
           <div className="search-icon">
-            <i className="fa fa-search"></i> 
           </div>
           <input
             id="search-input"
@@ -50,7 +49,7 @@ export function Searcher() {
             ))}
           </div>
         )}
-      </div>
+          </div>
 
       {/* Ícone de notificações */}
       <div className="notification-container">
