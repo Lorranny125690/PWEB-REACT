@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Icon from './Icon.png';
 
 const filter = ['comunidade', 'filmes', 'séries'];
 
@@ -8,12 +7,12 @@ export function Searcher() {
   const [focus, setFocus] = useState(false);
 
   const filterFiltrados = filter.filter((item) =>
-    item.toLowerCase().includes(busca.toLowerCase())
+    item.toLowerCase().startsWith(busca.toLowerCase())
   );
 
   const handleSelectOption = (item) => {
-    setBusca(item); // Atualiza o input com o valor selecionado
-    setFocus(false); // Fecha os resultados
+    setBusca(item);
+    setFocus(false);
   };
 
   return (
@@ -38,7 +37,7 @@ export function Searcher() {
             placeholder="Pesquisar"
             onChange={(ev) => setBusca(ev.target.value)}
             onFocus={() => setFocus(true)}
-            onBlur={() => setTimeout(() => setFocus(false), 200)} // Evita o fechamento imediato
+            onBlur={() => setTimeout(() => setFocus(false), 200)}
             className="search-input"
           />
         </div>
@@ -49,8 +48,7 @@ export function Searcher() {
               <div
                 key={index}
                 className="result-item"
-                onMouseDown={() => handleSelectOption(item)} // Atualiza o input
-              >
+                onMouseDown={() => handleSelectOption(item)}>
                 {item}
               </div>
             ))}

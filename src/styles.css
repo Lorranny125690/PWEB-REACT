@@ -93,8 +93,8 @@
   width: 16px;
   height: 16px;
   background-color: transparent;
-  mask: url('Search_icon.svg.png') no-repeat center;
-  -webkit-mask: url('Search_icon.svg.png') no-repeat center;
+  mask: url('modelos/Search_icon.svg.png') no-repeat center;
+  -webkit-mask: url('modelos/Search_icon.svg.png') no-repeat center;
   mask-size: cover;
   -webkit-mask-size: cover;
   background-color: #77b3d4;
@@ -123,7 +123,7 @@
 .notification-icon {
   width: 30px;
   height: 30px;
-  background-image: url('4226663.png');
+  background-image: url('modelos/4226663.png');
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
