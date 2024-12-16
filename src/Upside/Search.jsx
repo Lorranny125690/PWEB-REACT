@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Icon from '../modelos/Icon.png';
 
 const filter = ['comunidade', 'filmes', 'séries'];
 
