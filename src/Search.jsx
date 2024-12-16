@@ -11,6 +11,11 @@ export function Searcher() {
     item.toLowerCase().includes(busca.toLowerCase())
   );
 
+  const handleSelectOption = (item) => {
+    setBusca(item); // Atualiza o input com o valor selecionado
+    setFocus(false); // Fecha os resultados
+  };
+
   return (
     <div className="container">
       {/* Logo e título */}
@@ -25,8 +30,7 @@ export function Searcher() {
       <div className="search-container">
         <div className="Pesquisar">
           {/* Ícone de pesquisa */}
-          <div className="search-icon">
-          </div>
+          <div className="search-icon"></div>
           <input
             id="search-input"
             type="text"
@@ -34,22 +38,25 @@ export function Searcher() {
             placeholder="Pesquisar"
             onChange={(ev) => setBusca(ev.target.value)}
             onFocus={() => setFocus(true)}
-            onBlur={() => setFocus(false)}
+            onBlur={() => setTimeout(() => setFocus(false), 200)} // Evita o fechamento imediato
             className="search-input"
           />
         </div>
-
         {/* Resultados filtrados */}
         {focus && filterFiltrados.length > 0 && (
           <div className="results-container">
             {filterFiltrados.map((item, index) => (
-              <div key={index} className="result-item">
+              <div
+                key={index}
+                className="result-item"
+                onMouseDown={() => handleSelectOption(item)} // Atualiza o input
+              >
                 {item}
               </div>
             ))}
           </div>
         )}
-          </div>
+      </div>
 
       {/* Ícone de notificações */}
       <div className="notification-container">
