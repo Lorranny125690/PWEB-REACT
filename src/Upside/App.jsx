@@ -8,7 +8,7 @@ export function App() {
     <>
       <Header />
       <Searcher />
-      <Mid />
+      {/* <Mid /> */}
     </>
   )
 }
