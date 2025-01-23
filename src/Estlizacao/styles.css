@@ -12,7 +12,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  background-color: #77B3D4;
+  background-color: hsl(201, 52%, 65%);
   color: #fff;
   font-weight: 300;
 }
@@ -154,7 +154,7 @@
 }
 
 .mid {
-  background-image: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/ffb29bc5-81ec-4532-a9db-ec3d42e034a0/d9qbvn4-01d7104a-fce0-45d6-9ea2-1185126d506f.png/v1/fill/w_1280,h_720,q_80,strp/nightwing_wallpaper_2___blue_and_black_by_kabloogey_d9qbvn4-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NzIwIiwicGF0aCI6IlwvZlwvZmZiMjliYzUtODFlYy00NTMyLWE5ZGItZWMzZDQyZTAzNGEwXC9kOXFidm40LTAxZDcxMDRhLWZjZTAtNDVkNi05ZWEyLTExODUxMjZkNTA2Zi5wbmciLCJ3aWR0aCI6Ijw9MTI4MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.WVx8BTQr1RGTE0BmOTTrK0Bs16CYZSktDGKqHAnUwAU');
+  background-image: url();
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -166,6 +166,14 @@
   border-radius: 5px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
   z-index: 10;
+}
+
+.img {
+  position: relative; 
+  height: 100%; 
+  display: flex; 
+  justify-content: center;
+  align-items: center;
 }
 
 .font {
@@ -181,33 +189,59 @@
 
 .hamburguer {
   display: none;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.sidebar {
+  display: none;
+}
+
+.hamburguer-menu {
+  display: none;
 }
 
 @media (max-width: 480px) {
-  .menu-container {
-    display: flex;
-    flex-direction: row;
-    gap: 1rem;
+  body {
+    height: 100vh;
   }
 
-  .nav-left,
-  .nav-right.active {
+  .hamburguer-menu {
     display: block;
-    position: absolute;
-    left: 0;
-    text-align: center;
-    width: 100%;
-    height: calc(100vh - 10rem);
-    z-index: 100;
   }
 
-  .menu{
+  .menu {
     display: flex;
-    align-items: center;
-    gap: 0.5rem;
+    z-index: 2;
+    flex-direction: column;
+    text-align: left;
+    justify-content: space-between;
+    margin: 10%;
+    margin-top: 20%;
+    gap: 1rem;
+    font-size: 2rem;
+  }
+
+  .menu a {
+    text-decoration: none;
     color: white;
-    padding-block: 1rem;
-    cursor: pointer;
+  }
+
+  .sidebar {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 250px;
+    background-color: blue;
+    z-index: 1;
+  }
+
+  .nav-left {
+    display: none;
   }
 
   .title {
@@ -222,14 +256,5 @@
   .font {
     font-size: 20px;
   }
-  
-  .hamburguer {
-    background: none;
-    border: none;
-    font-size: 24px;
-    color: white;
-    cursor: pointer;
-    display: block;
-  }
-  
+
 }
