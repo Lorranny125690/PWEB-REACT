@@ -32,7 +32,6 @@
   background-position: center;
   background-size: contain; /* Ajusta a imagem ao tamanho do botão */
   position: absolute;
-  top: 50%;
   transform: translateY(-50%);
   border: none;
   padding: 0; /* Remove espaçamento interno */
@@ -48,11 +47,14 @@
 }
 
 #prev-button {
-  left: -80px; /* Alinhado à esquerda */
+  left: -80px; 
+  rotate: 180deg;
+  top: 38%;
 }
 
 #next-button {
-  right: -80px; /* Alinhado à direita */
+  right: -80px;
+  top: 50%; /* Alinhado à direita */
 }
 
 
