@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Dots:wght@400..700&family=Edu+AU+VIC+WA+NT+Guides:wght@400..700&family=Roboto+Slab:wght@100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 
+@import "tailwindcss";
+
 * {
   margin: 0;
   padding: 0;
@@ -7,10 +9,15 @@
   font-family: "Roboto Slab", serif;
 }
 
+body {
+  background-color: #f5f5f5;
+}
+
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 46px;
   padding: 10px 20px;
   background-color: hsl(201, 52%, 65%);
   color: #fff;
@@ -118,15 +125,22 @@
   background-size: contain;
 }
 
-.footer {
-  text-align: center;
-  padding: 10px;
-  background-color: #77B3D4;
+/* .footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2%;
+  height: 40px;
+  justify-content: center;
+  background-color: hsl(201, 52%, 65%);
   color: white;
-  position: fixed;
-  bottom: 0;
+  margin-top: 95px;
   width: 100%;
 }
+
+.footer-logo {
+  width: 100px;
+} */
 
 .results-container {
   display: flex;

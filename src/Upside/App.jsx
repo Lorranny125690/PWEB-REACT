@@ -1,8 +1,9 @@
 import { Header } from './Post.jsx';
 import { Searcher } from './Search.jsx';
-import '../Estlizacao/styles.css'
 import { Mid } from './middle.jsx';
-import { Sidebar } from './sidebar.jsx';
+import { Final } from'./final.jsx';
+import { Footer } from './footer.jsx';
+import { GamesPage } from './comunidade.jsx'
 
 export function App() {
   return (
@@ -10,6 +11,9 @@ export function App() {
       <Header />
       <Searcher />
       <Mid/>
+      <Final />
+      <GamesPage />
+      <Footer/>
     </>
   )
 }

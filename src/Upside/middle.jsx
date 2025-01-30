@@ -3,9 +3,9 @@ import '../Estlizacao/styles1.css';
 
 export function Mid() {
   const images = [
-    "https://cdn.pixabay.com/photo/2023/08/23/15/44/ai-generated-8208847_1280.png",
-    "https://media.istockphoto.com/id/1322104312/pt/foto/freedom-chains-that-transform-into-birds-charge-concept.jpg?s=612x612&w=0&k=20&c=e5oxSsSFlsD8bdgXTCKNW4X0POTo1hs7nqAaNOeLgoo=",
-    "https://t.ctcdn.com.br/JlHwiRHyv0mTD7GfRkIlgO6eQX8=/640x360/smart/i257652.jpeg",
+    "https://pa1.aminoapps.com/6714/44b86a6b50808f8d08d063b801237a2c2c59742c_hq.gif",
+    "https://pa1.aminoapps.com/6714/942b1f21e6b4aeac616fc3dc269316df0bdcaa1d_hq.gif",
+    "https://i.pinimg.com/originals/3c/80/36/3c80363c0c2aea38673b3f0cfefa9180.gif",
   ];
   
 
