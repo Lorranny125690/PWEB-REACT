@@ -1,5 +1,5 @@
 import React from "react";
-import "../Estlizacao/styles2.css";
+import "./Estilizacao/styles2.css";
 
 const categories = ["Comédia", "Drama", "Suspense", "Terror", "Cult"];
 

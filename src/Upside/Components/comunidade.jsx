@@ -1,5 +1,5 @@
 import React from "react";
-import '../Estlizacao/comunidade.css';
+import './Estilizacao/comunidade.css';
 
 export function GamesPage() {
   const characters = [

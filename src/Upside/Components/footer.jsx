@@ -1,5 +1,5 @@
 import React from "react";
-import "../Estlizacao/footer.css"; 
+import "./Estilizacao/footer.css"; 
 
 export const Footer = () => {
   return (

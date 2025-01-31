@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../Estlizacao/styles.css";
+import "./Estilizacao/styles.css";
 
 export function Header() {
   return (

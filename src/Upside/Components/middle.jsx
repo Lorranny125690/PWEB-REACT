@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../Estlizacao/styles1.css';
+import './Estilizacao/styles1.css';
 
 export function Mid() {
   const topics = [

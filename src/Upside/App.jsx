@@ -1,9 +1,9 @@
-import { Header } from './Post.jsx';
-import { Searcher } from './Search.jsx';
-import { Mid } from './middle.jsx';
-import { Final } from './final.jsx';
-import { Footer } from './footer.jsx';
-import { GamesPage } from './comunidade.jsx';
+import { Header } from './Components/Post.jsx';
+import { Searcher } from './Components/Search.jsx';
+import { Mid } from './Components/middle.jsx';
+import { Final } from './Components/final.jsx';
+import { Footer } from './Components/footer.jsx';
+import { GamesPage } from './Components/comunidade.jsx';
 import { Destaque } from "../Destaques/Destaque";
 import { Routes, Route } from "react-router-dom";
 
@@ -34,7 +34,7 @@ function CategoriasPage() {
   return (
     <>
       <Header />
-      <h1>Categorias</h1>
+      <Searcher />
     </>
   );
 }
@@ -43,7 +43,7 @@ function ComunidadesPage() {
   return (
     <>
       <Header />
-      <h1>Comunidades</h1>
+      <Searcher />
     </>
   );
 }
@@ -52,7 +52,7 @@ function NoticiasPage() {
   return (
     <>
       <Header />
-      <h1>Notícias</h1>
+      <Searcher />
     </>
   );
 }
@@ -61,7 +61,7 @@ function AjudaPage() {
   return (
     <>
       <Header />
-      <h1>Ajuda</h1>
+      <Searcher />
     </>
   );
 }
@@ -69,8 +69,7 @@ function AjudaPage() {
 function LoginPage() {
   return (
     <>
-      <Header />
-      <h1>Login</h1>
+      
     </>
   );
 }
@@ -78,8 +77,7 @@ function LoginPage() {
 function SignUpPage() {
   return (
     <>
-      <Header />
-      <h1>Sign Up</h1>
+
     </>
   );
 }
