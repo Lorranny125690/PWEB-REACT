@@ -17,10 +17,6 @@ export const Final = () => {
           </div>
         ))}
       </div>
-      {/* <footer className="footer">
-        <h2>Luluzinha™️</h2>
-        <p>© 2025 Todos os direitos reservados.</p>
-      </footer> */}
     </div>
   );
 };

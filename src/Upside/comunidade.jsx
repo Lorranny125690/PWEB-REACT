@@ -33,11 +33,12 @@ export function GamesPage() {
   ];
 
   return (
+    
     <div className="page-container">
-      {/* Header Section */}
       <div className="section-title">
         Comunidade
       </div>
+      <footer className="footer2"></footer>
 
       <div className="content-news">
       <h2 className="section-subtitle">Personagens populares</h2>
@@ -56,7 +57,8 @@ export function GamesPage() {
       </div>
       </div>
 
-      {/* News Section */}
+      <footer className="footer2"/>
+      
       <div className="container-comunidade">
         <h2 className="section-subtitle">Notícias atuais</h2>
         <div className="news-grid">
