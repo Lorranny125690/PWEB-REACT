@@ -4,7 +4,7 @@ import { Mid } from './Components/middle.jsx';
 import { Final } from './Components/final.jsx';
 import { Footer } from './Components/footer.jsx';
 import { GamesPage } from './Components/comunidade.jsx';
-import { Destaque } from "../Destaques/Destaque";
+import { Destaques } from "./Destaques/Destaque.jsx";
 import { Routes, Route } from "react-router-dom";
 
 function Home() {
@@ -25,7 +25,7 @@ function DestaquesPage() {
     <>
       <Header />
       <Searcher />
-      <Destaque />
+      <Destaques />
     </>
   );
 }
