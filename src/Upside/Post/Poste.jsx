@@ -47,6 +47,11 @@ export const Post = () => {
 
   return (
     <div className="posts-container">
+      <div class="write-button">
+        <a href="#" class="button">Escrever</a>
+        <span>Algo para compartilhar? Espalhe agora! ✍️ </span>
+      </div>
+
       {articles.map((article) => (
         <article key={article.id} className="post">
           <h2>{article.title}</h2>

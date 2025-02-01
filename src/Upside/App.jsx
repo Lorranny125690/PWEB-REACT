@@ -9,6 +9,7 @@ import { Routes, Route } from "react-router-dom";
 import { Login } from './Login/login.jsx';
 import { SingUp } from './Login/singup.jsx'
 import { Post } from './Post/Poste.jsx'
+import { HelpPage } from './Ajuda/Ajuda.jsx'
 
 function Homenosingup() {
   return (
@@ -79,7 +80,7 @@ function AjudaPage() {
   return (
     <>
       <Header />
-      <Searcher />
+      <HelpPage />
     </>
   );
 }
