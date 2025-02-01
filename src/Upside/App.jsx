@@ -6,6 +6,8 @@ import { Footer } from './Components/footer.jsx';
 import { GamesPage } from './Components/comunidade.jsx';
 import { Destaques } from "./Destaques/Destaque.jsx";
 import { Routes, Route } from "react-router-dom";
+import { Login } from './Login/login.jsx';
+import { SingUp } from './Login/singup.jsx'
 
 function Home() {
   return (
@@ -69,7 +71,14 @@ function AjudaPage() {
 function LoginPage() {
   return (
     <>
-      
+      <Login />
+      <div className="voltar">
+        <button 
+          onClick={() => window.location.href = "/"} 
+          style={{ cursor: 'pointer', color: 'white'}}>
+          Voltar
+        </button>
+      </div>
     </>
   );
 }
@@ -77,7 +86,14 @@ function LoginPage() {
 function SignUpPage() {
   return (
     <>
-
+      <SingUp />
+      <div className="voltar">
+        <button 
+          onClick={() => window.location.href = "/"} 
+          style={{ cursor: 'pointer', color: 'white'}}>
+          Voltar
+        </button>
+      </div>
     </>
   );
 }
