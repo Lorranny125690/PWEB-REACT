@@ -8,8 +8,22 @@ import { Destaques } from "./Destaques/Destaque.jsx";
 import { Routes, Route } from "react-router-dom";
 import { Login } from './Login/login.jsx';
 import { SingUp } from './Login/singup.jsx'
+import { Post } from './Post/Poste.jsx'
 
-function Home() {
+function Homenosingup() {
+  return (
+    <>
+      <Header />
+      <Searcher />
+      <Mid />
+      <Final />
+      <GamesPage />
+      <Footer />
+    </>
+  );
+}
+
+function Homesingup() {
   return (
     <>
       <Header />
@@ -28,6 +42,7 @@ function DestaquesPage() {
       <Header />
       <Searcher />
       <Destaques />
+      <Footer />
     </>
   );
 }
@@ -46,6 +61,7 @@ function ComunidadesPage() {
     <>
       <Header />
       <Searcher />
+      <Post />
     </>
   );
 }
@@ -101,7 +117,8 @@ function SignUpPage() {
 export function App() {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
+      <Route path="/" element={<Homenosingup />} />
+      <Route path="/" element={<Homesingup />} />
       <Route path="/destaque" element={<DestaquesPage />} />
       <Route path="/categorias" element={<CategoriasPage />} />
       <Route path="/comunidades" element={<ComunidadesPage />} />

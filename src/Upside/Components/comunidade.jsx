@@ -33,7 +33,7 @@ export function GamesPage() {
   ];
 
   return (
-    
+  
     <div className="page-container">
       <div className="section-title">
         Comunidade
