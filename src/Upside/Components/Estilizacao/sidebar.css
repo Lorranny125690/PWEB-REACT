@@ -1,9 +1,9 @@
 
 .sidebar {
   width: 250px;
+  position: fixed;
   height: 100vh;
-  background-color: var(--bg-color);
-  border-right: 1px solid var(--border-color);
+  background-color: rgba(90, 150, 200, 0.9);
   position: fixed;
   left: 0;
   top: 0;
@@ -11,7 +11,7 @@
   flex-direction: column;
   padding: 20px;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-  color: blue;
+  color: rgb(255, 255, 255);
 }
 
 .logo {
