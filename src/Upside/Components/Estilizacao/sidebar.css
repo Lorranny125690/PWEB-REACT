@@ -1,0 +1,37 @@
+/* Layout para a sidebar */
+.sidebar {
+  width: 250px; /* largura da sidebar */
+  height: 100vh; /* altura total */
+  background-color: var(--bg-color);
+  border-right: 1px solid var(--border-color);
+  position: fixed;
+  left: 0;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  z-index: -2; /* Garante que a sidebar fique acima do conteúdo */
+}
+
+/* Conteúdo principal - Posts */
+body {
+  margin-left: 250px;
+  width: calc(100% - 250px);
+  background-color: var(--bg-color);
+  transition: background 0.3s ease;
+}
+
+/* Responsividade - Para dispositivos móveis */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%; /* A sidebar ocupa toda a largura na versão móvel */
+    height: auto;
+    position: relative;
+  }
+
+  .posts-container {
+    margin-left: 0; /* Retira a margem da sidebar */
+    width: 100%; /* O conteúdo ocupa toda a tela */
+  }
+}

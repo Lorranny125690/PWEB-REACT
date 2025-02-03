@@ -7,24 +7,12 @@ import { GamesPage } from './Components/comunidade.jsx';
 import { Destaques } from "./Destaques/Destaque.jsx";
 import { Routes, Route } from "react-router-dom";
 import { Login } from './Login/login.jsx';
-import { SingUp } from './Login/singup.jsx'
-import { Post } from './Post/Poste.jsx'
-import { HelpPage } from './Ajuda/Ajuda.jsx'
+import { SingUp } from './Login/singup.jsx';
+import { Post } from './Post/Poste.jsx';
+import { HelpPage } from './Ajuda/Ajuda.jsx';
+import { Sidebar } from './Components/sidebar.jsx'
 
 function Homenosingup() {
-  return (
-    <>
-      <Header />
-      <Searcher />
-      <Mid />
-      <Final />
-      <GamesPage />
-      <Footer />
-    </>
-  );
-}
-
-function Homesingup() {
   return (
     <>
       <Header />
@@ -119,7 +107,6 @@ export function App() {
   return (
     <Routes>
       <Route path="/" element={<Homenosingup />} />
-      <Route path="/" element={<Homesingup />} />
       <Route path="/destaque" element={<DestaquesPage />} />
       <Route path="/categorias" element={<CategoriasPage />} />
       <Route path="/comunidades" element={<ComunidadesPage />} />
