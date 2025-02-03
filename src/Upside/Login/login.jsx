@@ -1,9 +1,12 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"; // IMPORTAÇÃO CORRETA DO useNavigate
 import "./Login.css";
 
 export const Login = () => {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
+
+  const navigate = useNavigate(); 
 
   const validarEmail = (email) => {
     const regexEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
@@ -59,6 +62,7 @@ export const Login = () => {
           />
           <button type="submit">Confirmar</button>
           <a href="#">Esqueceu a senha?</a>
+          <a href="/signup" onClick={(e) => { e.preventDefault(); navigate("/signup"); }}>Inscrever-se</a>
         </form>
       </div>
     </div>

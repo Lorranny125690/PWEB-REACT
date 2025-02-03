@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Importando useNavigate
+import { useNavigate } from "react-router-dom";
 import './Poste.css';
 
 export const Post = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // Simula o login
-  const [showForm, setShowForm] = useState(false); // Controla exibição do formulário
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [showForm, setShowForm] = useState(false);
   const [newPost, setNewPost] = useState({
     title: "",
     image: "",
