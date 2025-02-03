@@ -23,7 +23,6 @@ body {
   width: max-content;
   justify-content: center;
   align-items: center;
-  margin-left: 43rem;
 }
 
 .section-subtitle {
@@ -31,6 +30,7 @@ body {
   font-weight: 600;
   font-size: 40px;
   margin-top: 1%;
+  color: #0063d4;
   display: flex;
   justify-content: center;
 }

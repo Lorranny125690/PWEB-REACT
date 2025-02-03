@@ -8,7 +8,6 @@ export function GamesPage() {
     { name: "Nathan Drake", imgSrc: "https://assetsio.gnwcdn.com/digitalfoundry-2015-hands-on-with-uncharted-the-nathan-drake-collection-1443340941444.jpg?width=1200&height=1200&fit=crop&quality=100&format=png&enable=upscale&auto=webp", wikiLink: "Uncharted Wiki" },
     { name: "Link", imgSrc: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Linkin_Park-Rock_im_Park_2014-_by_2eight_3SC0327.jpg/1200px-Linkin_Park-Rock_im_Park_2014-_by_2eight_3SC0327.jpg", wikiLink: "Zelda Wiki" },
     { name: "Pikachu", imgSrc: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4VSWIYAR4LL-agG3Xd1HYV-MFzThjMmr9Tw&s", wikiLink: "Pokemon Wiki" },
-    { name: "Rathalos", imgSrc: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhYc8Lykji7RW0FFT0exxQQvhP1_i66BOc_KF1Nm2TvRWz-1dXoE_ZT-3NY2O19qmUKLSSO6LPdEfRGBNcmp1HW8dHnpLc1UBWNufKQIplC6bs2EA2Y8suJ7k09IaNAS27d09FQfL3DuoQ/s1600/rathalosrathian-gameblast.jpg", wikiLink: "Monster Hunter Wiki" },
   ];
 
   const articles = [

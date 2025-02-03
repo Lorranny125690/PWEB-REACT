@@ -23,20 +23,17 @@ export function Mid() {
       <div className="overlay"></div>
       <div id="characters-section">
         <div className="image-container">
-          {/* Título sobreposto à imagem */}
           <div className="title-container">
             <h2>{topics[currentTopic].title}</h2>
             <h3>{topics[currentTopic].name}</h3>
           </div>
           
-          {/* Imagem */}
           <img
             className="image char active"
             src={topics[currentTopic].image}
             alt={topics[currentTopic].name}
           />
 
-          {/* Botões de navegação */}
           <button id="prev-button" className="nav-button" onClick={handlePrev}></button>
           <button id="next-button" className="nav-button" onClick={handleNext}></button>
         </div>
