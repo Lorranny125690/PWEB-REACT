@@ -1,66 +1,71 @@
-import React from 'react';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom"; // Importando useNavigate
 import './Poste.css';
 
 export const Post = () => {
-  const articles = [
-    {
-      id: 1,
-      title: "Introdução ao React",
-      author: "João Silva",
-      date: "10 de Outubro de 2023",
-      image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png",
-      content: "React é uma biblioteca JavaScript para construir interfaces de usuário. Neste artigo, vamos explorar os conceitos básicos do React."
-    },
-    {
-      id: 2,
-      title: "Como usar Hooks no React",
-      author: "Maria Souza",
-      date: "15 de Outubro de 2023",
-      image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png",
-      content: "Hooks são uma adição poderosa ao React que permitem usar estado e outros recursos sem escrever uma classe."
-    },
-    {
-      id: 3,
-      title: "Criando Componentes Reutilizáveis",
-      author: "Pedro Oliveira",
-      date: "20 de Outubro de 2023",
-      image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png",
-      content: "Componentes reutilizáveis são a chave para manter seu código React organizado e eficiente."
-    },
-    {
-      id: 3,
-      title: "Criando Componentes Reutilizáveis",
-      author: "Pedro Oliveira",
-      date: "20 de Outubro de 2023",
-      image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png",
-      content: "Componentes reutilizáveis são a chave para manter seu código React organizado e eficiente."
-    },
-    {
-      id: 3,
-      title: "Criando Componentes Reutilizáveis",
-      author: "Pedro Oliveira",
-      date: "20 de Outubro de 2023",
-      image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png",
-      content: "Componentes reutilizáveis são a chave para manter seu código React organizado e eficiente."
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // Simula o login
+  const [showForm, setShowForm] = useState(false); // Controla exibição do formulário
+  const [newPost, setNewPost] = useState({
+    title: "",
+    image: "",
+    content: ""
+  });
+
+  const navigate = useNavigate(); 
+
+  const handleWriteClick = () => {
+    if (!isLoggedIn) {
+      const choice = window.confirm("Você não tem cadastro! Deseja fazer login ou se cadastrar?");
+      if (choice) {
+          navigate("/login");
+        } else {
+          navigate("/signup");
+        }
+      return;
     }
-  ];
+    setShowForm(true);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!newPost.title || !newPost.content) {
+      alert("Título e conteúdo são obrigatórios!");
+      return;
+    }
+
+    setShowForm(false);
+  };
 
   return (
     <div className="posts-container">
-      <div class="write-button">
-        <a href="#" class="button">Escrever</a>
-        <span>Algo para compartilhar? Espalhe agora! ✍️ </span>
+      <div className="write-button">
+        <button onClick={handleWriteClick} className="button">Escrever</button>
+        <span>Algo para compartilhar? Espalhe agora! ✍️</span>
       </div>
 
-      {articles.map((article) => (
-        <article key={article.id} className="post">
-          <h2>{article.title}</h2>
-          <p className="meta">Publicado em {article.date} por <span>{article.author}</span></p>
-          <img src={article.image} alt="Imagem da Postagem" className="post-image" />
-          <p>{article.content}</p>
-          <a href="#" className="read-more">Leia mais...</a>
-        </article>
-      ))}
+      {showForm && (
+        <div className="post-form-container">
+          <h2>Nova Postagem</h2>
+          <form onSubmit={handleSubmit} className="post-form">
+            <input
+              type="text"
+              placeholder="Título"
+              value={newPost.title}
+              onChange={(e) => setNewPost({ ...newPost, title: e.target.value })}
+              className="post-input"
+              required
+            />
+            <textarea
+              placeholder="Escreva seu post..."
+              value={newPost.content}
+              onChange={(e) => setNewPost({ ...newPost, content: e.target.value })}
+              className="post-textarea"
+              required
+            ></textarea>
+            <button type="submit" className="post-submit-button">Publicar</button>
+          </form>
+        </div>
+      )}
     </div>
   );
 };
