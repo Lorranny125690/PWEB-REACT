@@ -23,15 +23,15 @@ export const Post = () => {
   const handleWriteClick = () => {
     if (!isLoggedIn) {
       const choice = window.confirm("Você não tem cadastro! Deseja fazer login ou se cadastrar?");
+      
       if (choice) {
-          navigate("/login");
-        } else {
-          navigate("/signup");
-        }
-      return;
+        navigate("/login"); // Só redireciona se o usuário clicar em OK
+      } 
+      return; // Se clicar em "Cancelar", simplesmente retorna e não mostra o formulário
     }
+    
     setShowForm(true);
-  };
+  };  
 
   const handleSubmit = (e) => {
     e.preventDefault();

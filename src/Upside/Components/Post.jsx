@@ -3,24 +3,16 @@ import { Link } from "react-router-dom";
 import "./Estilizacao/styles.css";
 
 export function Header() {
-
   return (
     <header className="header">
       <div className="nav-left">
-        <Link to="/">Home</Link>
-        <Link to="/destaque">Destaques</Link>
-        <Link to="/categorias">Categorias</Link>
-        <Link to="/comunidades">Comunidades</Link>
-        <Link to="/noticias">Notícias</Link>
-        <Link to="/ajuda">Ajuda</Link>
+        <Link to="/"></Link>
+        <Link to="/destaque"></Link>
+        <Link to="/categorias"></Link>
+        <Link to="/comunidades"></Link>
+        <Link to="/noticias"></Link>
+        <Link to="/ajuda"></Link>
       </div>
-
-      <label className="hamburguer-menu">
-        <input type="checkbox" />
-        <div></div>
-        <div></div>
-        <div></div>
-      </label>
 
       <nav className="sidebar">
         <div className="menu">

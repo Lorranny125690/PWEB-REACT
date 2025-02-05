@@ -18,7 +18,6 @@ export function Searcher() {
 
   return (
     <div className="container">
-      {/* Logo e título */}
       <div className="Super-container">
         <div className="logo-container">
           <img src={Icon} alt="Luluzinha Logo" className="logo" />
@@ -26,10 +25,8 @@ export function Searcher() {
         </div>
       </div>
 
-      {/* Barra de pesquisa */}
       <div className="search-container">
         <div className="Pesquisar">
-          {/* Ícone de pesquisa */}
           <div className="search-icon"></div>
           <input
             id="search-input"
@@ -42,7 +39,6 @@ export function Searcher() {
             className="search-input"
           />
         </div>
-        {/* Resultados filtrados */}
         {focus && filterFiltrados.length > 0 && (
           <div className="results-container">
             {filterFiltrados.map((item, index) => (

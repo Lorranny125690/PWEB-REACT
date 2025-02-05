@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // IMPORTAÇÃO CORRETA DO useNavigate
+import { useNavigate } from "react-router-dom";
 import "./Login.css";
 
 export const Login = () => {

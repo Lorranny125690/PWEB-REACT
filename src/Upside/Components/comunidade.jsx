@@ -1,5 +1,6 @@
 import React from "react";
 import './Estilizacao/comunidade.css';
+import { Link } from "react-router-dom";
 
 export function GamesPage() {
   const characters = [
@@ -40,7 +41,7 @@ export function GamesPage() {
       <footer className="footer2"></footer>
 
       <div className="content-news">
-      <h2 className="section-subtitle">Personagens populares</h2>
+      <Link to="/char" className="section-subtitle">Personagens populares</Link>
       <div className="character-grid">
         {characters.map((character, index) => (
           <div key={index} className="character-card">
@@ -59,7 +60,7 @@ export function GamesPage() {
       <footer className="footer2"/>
       
       <div className="container-comunidade">
-        <h2 className="section-subtitle">Notícias atuais</h2>
+        <Link to="/noticias" className="section-subtitle">Notícias atuais</Link>
         <div className="news-grid">
           {articles.map((article, index) => (
             <div key={index} className="news-card">

@@ -1,0 +1,46 @@
+.character-page {
+  display: flex;
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+
+.character-sidebar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 300px;
+  background-color: #e0f7ff;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.sidebar-header img {
+  width: 150px;
+  height: 150px;
+  border-radius: 10px;
+}
+
+.sidebar-info p {
+  font-size: 0.9rem;
+  margin: 10px 0;
+}
+
+.character-content {
+  flex: 1;
+  background-color: white;
+  padding: 20px;
+  margin-left: 20px;
+  border-radius: 10px;
+}
+
+.character-content h1 {
+  font-size: 2rem;
+}
+
+.character-content p {
+  font-size: 1.1rem;
+  color: #555;
+}

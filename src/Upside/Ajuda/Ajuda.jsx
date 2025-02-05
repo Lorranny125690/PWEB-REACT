@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./Ajuda.css"; // Importa o CSS
+import "./Ajuda.css";
 
 export function HelpPage() {
   const faqs = [
@@ -15,25 +15,25 @@ export function HelpPage() {
   };
 
   return (
-    <div className="help-wrapper"> {/* Contêiner para centralizar */}
+    <div className="help-wrapper">
       <div className="help-container">
         <h1 className="help-title">Página de Ajuda</h1>
         <p className="help-description">Encontre respostas para as dúvidas mais comuns.</p>
 
         <div className="faq-list">
           {faqs.map((faq, index) => (
-            <div key={index} className="faq-item">
+            <div key={index} className={`faq-item ${openIndex === index ? "open" : ""}`}>
               <button className="faq-question" onClick={() => toggleFAQ(index)}>
                 {faq.question}
                 <span>{openIndex === index ? "▲" : "▼"}</span>
               </button>
-              {openIndex === index && <p className="faq-answer">{faq.answer}</p>}
+              <p className="faq-answer">{faq.answer}</p>
             </div>
           ))}
         </div>
 
         <div className="contact-section">
-          <a href="mailto:suporte@exemplo.com" className="contact-button">
+          <a href="mailto:luluzitaslevk@gmail.com" className="contact-button">
             Entrar em contato
           </a>
         </div>
