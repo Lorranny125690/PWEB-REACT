@@ -2,24 +2,28 @@ import React from "react";
 import "./Char.css";
 
 export function Character({ character }) {
+  
   return (
     <div className="character-page">
       <aside className="character-sidebar">
         <div className="sidebar-header">
+          <img src={character.image} alt={character.name} className="character-image" />
           <h2>{character.name}</h2>
-          <img src={character.image} alt={character.name} />
         </div>
         <div className="sidebar-info">
-          <p><strong>Type:</strong> {character.type}</p>
-          <p><strong>Gender:</strong> {character.gender}</p>
-          <p><strong>Abilities:</strong> {character.abilities.join(", ")}</p>
-          <p><strong>Species:</strong> {character.species}</p>
+          <p><strong>Type:</strong> {character.type || "Unknown"}</p>
+          <p><strong>Gender:</strong> {character.gender || "Unknown"}</p>
+          <p><strong>Species:</strong> {character.species || "Unknown"}</p>
+          <p><strong>Abilities:</strong> {character.abilities.length > 0 ? character.abilities.join(", ") : "None"}</p>
         </div>
       </aside>
 
       <main className="character-content">
-        <h1>{character.name}</h1>
-        <p>{character.description}</p>
+        <div className="character-header">
+          <h1>{character.name}</h1>
+          <span className="character-tag">{character.type}</span>
+        </div>
+        <p className="character-description">{character.description || "No description available."}</p>
       </main>
     </div>
   );

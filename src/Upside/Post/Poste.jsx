@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import './Poste.css';
 
 export const Post = () => {
@@ -18,16 +18,16 @@ export const Post = () => {
     { id: 4, title: "O impacto dos e-sports no cenário mundial", content: "Os torneios de e-sports já movimentam bilhões e atraem milhões de espectadores!" },
   ]);
 
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
   const handleWriteClick = () => {
     if (!isLoggedIn) {
       const choice = window.confirm("Você não tem cadastro! Deseja fazer login ou se cadastrar?");
       
       if (choice) {
-        navigate("/login"); // Só redireciona se o usuário clicar em OK
+        navigate("/login");
       } 
-      return; // Se clicar em "Cancelar", simplesmente retorna e não mostra o formulário
+      return;
     }
     
     setShowForm(true);
@@ -40,6 +40,8 @@ export const Post = () => {
       return;
     }
 
+    setPosts([...posts, { id: posts.length + 1, title: newPost.title, content: newPost.content }]);
+    setNewPost({ title: "", image: "", content: "" });
     setShowForm(false);
   };
 
@@ -82,30 +84,6 @@ export const Post = () => {
           </div>
         ))}
       </div>
-
-      {showForm && (
-        <div className="post-form-container">
-          <h2>Nova Postagem</h2>
-          <form onSubmit={handleSubmit} className="post-form">
-            <input
-              type="text"
-              placeholder="Título"
-              value={newPost.title}
-              onChange={(e) => setNewPost({ ...newPost, title: e.target.value })}
-              className="post-input"
-              required
-            />
-            <textarea
-              placeholder="Escreva seu post..."
-              value={newPost.content}
-              onChange={(e) => setNewPost({ ...newPost, content: e.target.value })}
-              className="post-textarea"
-              required
-            ></textarea>
-            <button type="submit" className="post-submit-button">Publicar</button>
-          </form>
-        </div>
-      )}
     </div>
   );
 };

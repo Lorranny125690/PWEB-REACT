@@ -18,7 +18,6 @@ export function Header() {
         <div className="menu">
           <Link to="/">Home</Link>
           <Link to="/destaque">Destaques</Link>
-          <Link to="/categorias">Categorias</Link>
           <Link to="/comunidades">Comunidades</Link>
           <Link to="/noticias">Notícias</Link>
           <Link to="/ajuda">Ajuda</Link>

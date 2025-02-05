@@ -38,15 +38,6 @@ function DestaquesPage() {
   );
 }
 
-function CategoriasPage() {
-  return (
-    <>
-      <Header />
-      <Searcher />
-    </>
-  );
-}
-
 function ComunidadesPage() {
   return (
     <>
@@ -118,7 +109,6 @@ const pikachuData = {
   species: "Mouse Pokémon",
 };
 
-
 function CharPage() {
   return (
     <>
@@ -136,7 +126,6 @@ export function App() {
     <Routes>
       <Route path="/" element={<Homenosingup />} />
       <Route path="/destaque" element={<DestaquesPage />} />
-      <Route path="/categorias" element={<CategoriasPage />} />
       <Route path="/comunidades" element={<ComunidadesPage />} />
       <Route path="/noticias" element={<NoticiasPage />} />
       <Route path="/ajuda" element={<AjudaPage />} />
