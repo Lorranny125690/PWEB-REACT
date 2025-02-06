@@ -1,7 +1,10 @@
 import React from "react";
 import "./Char.css";
+import { Link, useNavigate } from "react-router-dom";
 
 export function Character({ character }) {
+  
+  const navigate = useNavigate();
   
   return (
     <div className="character-page">
@@ -21,7 +24,7 @@ export function Character({ character }) {
       <main className="character-content">
         <div className="character-header">
           <h1>{character.name}</h1>
-          <span className="character-tag">{character.type}</span>
+          <Link to = "/characterdetail" className="character-tag">Ler mais</Link>
         </div>
         <p className="character-description">{character.description || "No description available."}</p>
       </main>

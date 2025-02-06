@@ -1,9 +1,6 @@
 import React from "react";
-import { useParams } from "react-router-dom";
-import "./CharDetail.css";
 
 export function CharacterDetail({ characters }) {
-  const { id } = useParams();
   const character = characters.find((char) => char.id === parseInt(id));
 
   if (!character) {

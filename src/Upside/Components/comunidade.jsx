@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 
 export function GamesPage() {
   const characters = [
-    { name: "Ellie", imgSrc: "https://meups.com.br/wp-content/uploads/2016/12/The-Last-of-Us-Part-II-900x503.jpg", wikiLink: "The Last of Us Wiki" },
-    { name: "Lara Croft", imgSrc: "https://preview.redd.it/a8xh0sovyvf51.jpg?auto=webp&s=e5a210c7755ab64a859b85d282c7acc5ce561e7d", wikiLink: "Tomb Raider Wiki" },
+    { name: "Ellie", imgSrc: "https://i.pinimg.com/originals/cf/93/4b/cf934bbf661d705f29b42ea170308887.gif", wikiLink: "The Last of Us Wiki" },
+    { name: "Lara Croft", imgSrc: "https://media.tenor.com/Oo4hq-3-DIgAAAAM/mad-lara-croft.gif", wikiLink: "Tomb Raider Wiki" },
     { name: "Nathan Drake", imgSrc: "https://assetsio.gnwcdn.com/digitalfoundry-2015-hands-on-with-uncharted-the-nathan-drake-collection-1443340941444.jpg?width=1200&height=1200&fit=crop&quality=100&format=png&enable=upscale&auto=webp", wikiLink: "Uncharted Wiki" },
     { name: "Link", imgSrc: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Linkin_Park-Rock_im_Park_2014-_by_2eight_3SC0327.jpg/1200px-Linkin_Park-Rock_im_Park_2014-_by_2eight_3SC0327.jpg", wikiLink: "Zelda Wiki" },
     { name: "Pikachu", imgSrc: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4VSWIYAR4LL-agG3Xd1HYV-MFzThjMmr9Tw&s", wikiLink: "Pokemon Wiki" },

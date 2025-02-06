@@ -13,6 +13,7 @@ import { HelpPage } from './Ajuda/Ajuda.jsx';
 import { Noticias } from './Noticias/Noticias.jsx';
 import { Sidebar } from './Components/sidebar.jsx';
 import { Character } from './Personagens/Char.jsx';
+import { CharacterDetail } from './Characteres/Individual.jsx';
 
 function Homenosingup() {
   return (
@@ -120,6 +121,17 @@ function CharPage() {
   );
 }
 
+function CharacterPage() {
+  console.log("Renderizando NoticiasPage...");
+  return (
+    <>
+      <Header />
+      <Searcher />
+      <CharacterDetail/>
+      <Footer />
+    </>
+  );
+}
 
 export function App() {
   return (
@@ -132,6 +144,7 @@ export function App() {
       <Route path="/login" element={<LoginPage />} />
       <Route path="/signup" element={<SignUpPage />} />
       <Route path="/char" element={<CharPage />} />
+      <Route path="/characterdetail" element={<CharacterPage />} />
     </Routes>
   );
 }
