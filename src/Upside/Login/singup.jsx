@@ -4,33 +4,40 @@ import { useEffect } from "react";
 import api from "../services/api"
 
 export const SingUp = () => {
-  let user = []
 
   async function getUser(){
     user = await api.post('/usuarios')
     console.log(user)
   }
 
-  useEffect(() => {
-    async function fetchUsers() {
-      try {
-        const response = await api.get("/usuarios"); // Corrigido para GET
-        console.log(response.data);
-      } catch (error) {
-        console.error("Erro ao buscar usuários", error);
-      }
-    }
-    fetchUsers();
-  }, []);
-
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [nome, setnome] = useState("");
   const [confirmarSenha, setConfirmarSenha] = useState("");
 
-  const handleSubmit = (e) => {
+  async function createUser(user) {
+    try {
+      console.log("Enviando usuário:", user);
+      const response = await api.post("/usuarios", user);
+      console.log("Usuário cadastrado com sucesso:", response.data);
+      alert("Cadastro realizado com sucesso!");
+    } catch (error) {
+      console.error("Erro ao cadastrar usuário:", error);
+      alert("Erro ao cadastrar usuário. Verifique os dados e tente novamente.");
+    }
+  }
+
+  async function handleSubmit(e) {
     e.preventDefault();
-    console.log(typeof nome, 'chegou aqui')
+      const user = {
+        email,
+        nome,
+        senha
+      }
+      console.log(user)
+      await createUser(user)
+    
+
     if (senha !== confirmarSenha) {
       window.alert("Os campos precisam ser os mesmos!");
     }
