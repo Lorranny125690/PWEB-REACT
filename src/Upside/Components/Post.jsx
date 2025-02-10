@@ -6,17 +6,6 @@ import api from "../services/api"
 import { useEffect } from "react";
 
 export function Header() {
-  let user = []
-
-  async function getUser(){
-    user = await api.get('/usuarios')
-    console.log(user)
-  }
-
-  useEffect(() => {
-    getUser()
-  }, [])
-
   return (
     <header className="header">
       <div className="nav-left">

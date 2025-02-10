@@ -1,22 +1,40 @@
 import React, { useState } from "react";
 import "./Login.css";
+import { useEffect } from "react";
+import api from "../services/api"
 
 export const SingUp = () => {
+  let user = []
+
+  async function getUser(){
+    user = await api.post('/usuarios')
+    console.log(user)
+  }
+
+  useEffect(() => {
+    async function fetchUsers() {
+      try {
+        const response = await api.get("/usuarios"); // Corrigido para GET
+        console.log(response.data);
+      } catch (error) {
+        console.error("Erro ao buscar usuários", error);
+      }
+    }
+    fetchUsers();
+  }, []);
+
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
-  const [confirmarEmail, setConfirmarEmail] = useState("");
+  const [nome, setnome] = useState("");
   const [confirmarSenha, setConfirmarSenha] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    if (email !== confirmarEmail || senha !== confirmarSenha) {
+    console.log(typeof nome, 'chegou aqui')
+    if (senha !== confirmarSenha) {
       window.alert("Os campos precisam ser os mesmos!");
-    } else {
-      window.alert("Cadastro realizado com sucesso!");
     }
   };
-
   return (
     <div className="container-login">
       <div className="left-section">
@@ -44,13 +62,12 @@ export const SingUp = () => {
             value={senha}
             onChange={(e) => setSenha(e.target.value)}
           />
-
           <label>Confirmar Email</label>
           <input
-            type="email"
+            type="text"
             placeholder="Confirmar Email"
-            value={confirmarEmail}
-            onChange={(e) => setConfirmarEmail(e.target.value)}
+            value={nome}
+            onChange={(e) => setnome(e.target.value)}
           />
           <label>Confirmar Senha</label>
           <input
