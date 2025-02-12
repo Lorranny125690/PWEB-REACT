@@ -12,18 +12,22 @@ import { Post } from './Post/Poste.jsx';
 import { HelpPage } from './Ajuda/Ajuda.jsx';
 import { Noticias } from './Noticias/Noticias.jsx';
 import { Sidebar } from './Components/sidebar.jsx';
-import { Character } from './Personagens/Char.jsx';
-import { CharacterDetail } from './Characteres/Individual.jsx';
+import { AuthProvider } from "./services/contexts";
+import { PostDetail } from './Post/PostDetail.jsx';
+import { EditProfile } from './Login/EditarPerfil.jsx'
+import { NoticiaDetalhe } from './Noticias/NoticiaDetail.jsx';
 
 function Homenosingup() {
   return (
     <>
-      <Header />
-      <Searcher />
-      <Mid />
-      <Final />
-      <GamesPage />
-      <Footer />
+      <AuthProvider>
+        <Header />
+        <Searcher />
+        <Mid />
+        <Final />
+        <GamesPage />
+        <Footer />
+      </AuthProvider>
     </>
   );
 }
@@ -100,34 +104,44 @@ function SignUpPage() {
   );
 }
 
-const pikachuData = {
-  name: "Pikachu",
-  description: "Pikachu é um Pokémon do tipo Elétrico conhecido por sua aparência fofa e seus ataques elétricos.",
-  image: "https://i.pinimg.com/474x/00/f8/b1/00f8b1df62b83086707b5e85fc6c9629.jpg",
-  type: "Electric",
-  gender: "50% ♂ / 50% ♀",
-  abilities: ["Static", "Lightning Rod"],
-  species: "Mouse Pokémon",
-};
-
-function CharPage() {
+function EditarPerfil() {
   return (
     <>
-      <Header />
-      <Searcher />
-      <Character character={pikachuData} />
-      <Footer />
+
     </>
-  );
+  )
 }
 
-function CharacterPage() {
+function NoticiaDetail() {
   console.log("Renderizando NoticiasPage...");
   return (
     <>
       <Header />
       <Searcher />
-      <CharacterDetail/>
+      <NoticiaDetalhe/>
+      <Footer />
+    </>
+  );
+}
+
+function ImagemPage() {
+  console.log("Renderizando NoticiasPage...");
+  return (
+    <>
+      <Header />
+      <Searcher />
+      <Footer />
+    </>
+  );
+}
+
+function PostDetail1() {
+  console.log("Renderizando NoticiasPage...");
+  return (
+    <>
+      <Header />
+      <Searcher />
+      <PostDetail/>
       <Footer />
     </>
   );
@@ -143,8 +157,9 @@ export function App() {
       <Route path="/ajuda" element={<AjudaPage />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/signup" element={<SignUpPage />} />
-      <Route path="/char" element={<CharPage />} />
-      <Route path="/characterdetail" element={<CharacterPage />} />
+      <Route path="/post/:id" element={<PostDetail />} />
+      <Route path="/noticia/:id" element={<NoticiaDetalhe />} />
+      <Route path="/image" element={<ImagemPage />} />
     </Routes>
   );
 }

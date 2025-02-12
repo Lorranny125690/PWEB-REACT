@@ -1,48 +1,104 @@
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import './Poste.css';
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import "./Poste.css";
+import api from "../services/api";
 
 export const Post = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showForm, setShowForm] = useState(false);
   const [newPost, setNewPost] = useState({
-    title: "",
-    image: "",
-    content: ""
-  });
-
-  const [posts, setPosts] = useState([
-    { id: 1, title: "Bem-vindo ao Mundo Geek!", content: "Aqui falamos sobre filmes, séries e games que amamos!" },
-    { id: 2, title: "O que esperar da nova geração de consoles?", content: "Os consoles estão cada vez mais poderosos e cheios de recursos inovadores!" },
-    { id: 3, title: "Melhores animes de 2025", content: "Confira nossa lista com os animes que estão bombando este ano!" },
-    { id: 4, title: "O impacto dos e-sports no cenário mundial", content: "Os torneios de e-sports já movimentam bilhões e atraem milhões de espectadores!" },
-  ]);
+    titulo: "",
+    conteudo: "",
+    categoria: "",
+    id_imagem: "",
+    id_usuario: localStorage.getItem("usuarioId") || "",
+  });  
+  const [posts, setPosts] = useState([]);
+  const [images, setImages] = useState([]);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const navigate = useNavigate();
 
-  const handleWriteClick = () => {
-    if (!isLoggedIn) {
-      const choice = window.confirm("Você não tem cadastro! Deseja fazer login ou se cadastrar?");
-      
-      if (choice) {
-        navigate("/login");
-      } 
-      return;
-    }
-    
-    setShowForm(true);
-  };  
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const response = await api.get("/posts");
+        console.log("Posts carregados:", response.data);
+        setPosts(response.data);
+      } catch (error) {
+        console.error("Erro ao carregar posts:", error);
+      }
+    };
 
-  const handleSubmit = (e) => {
+    const fetchImages = async () => {
+      try {
+        const response = await api.get("/imagens");
+        console.log("Imagens carregadas:", response.data);
+        setImages(response.data);
+      } catch (error) {
+        console.error("Erro ao carregar imagens:", error);
+      }
+    };
+
+    fetchPosts();
+    fetchImages();
+
+    const token = localStorage.getItem("token");
+    setIsAuthenticated(!!token);
+    console.log("meu token:", token)
+  }, []);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setNewPost((prevPost) => ({ ...prevPost, [name]: value }));
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!newPost.title || !newPost.content) {
-      alert("Título e conteúdo são obrigatórios!");
+    console.log("Dados do novo post", newPost);
+  
+    const usuarioId = localStorage.getItem("usuarioId");
+    if (!usuarioId) {
+      alert("Erro: usuário não identificado. Faça login novamente.");
       return;
     }
+    console.log(usuarioId)
 
-    setPosts([...posts, { id: posts.length + 1, title: newPost.title, content: newPost.content }]);
-    setNewPost({ title: "", image: "", content: "" });
-    setShowForm(false);
+  
+    if (!newPost.titulo || !newPost.conteudo || !newPost.categoria) {
+      alert("Título, conteúdo e categoria são obrigatórios!");
+      return;
+    }
+  
+    console.log("ID do usuário recuperado:", usuarioId);
+
+    setNewPost((prevPost) => ({
+      ...prevPost,
+      id_usuario: usuarioId,
+    }));    
+  
+    try {
+      const response = await api.post("/posts", {
+        ...newPost,
+        id_usuario: usuarioId,
+      });
+      console.log("Resposta da API ao criar post:", response.data);
+      setPosts((prevPosts) => [...prevPosts, response.data]);
+      setNewPost({ titulo: "", conteudo: "", categoria: "", id_imagem: "", id_usuario: usuarioId });
+      setShowForm(false);
+      alert("Postado com sucesso!");
+    } catch (error) {
+      console.error("Erro ao criar post:", error.response || error);
+      alert("Erro ao postar!");
+    }
+  };
+
+  const handleWriteClick = () => {
+    if (!isAuthenticated) {
+      alert("Você precisa estar logado para postar!");
+      navigate("/login");
+    } else {
+      setShowForm(true);
+    }
   };
 
   return (
@@ -54,35 +110,41 @@ export const Post = () => {
 
       {showForm && (
         <div className="post-form-container">
-          <h2>Nova Postagem</h2>
           <form onSubmit={handleSubmit} className="post-form">
-            <input
-              type="text"
-              placeholder="Título"
-              value={newPost.title}
-              onChange={(e) => setNewPost({ ...newPost, title: e.target.value })}
-              className="post-input"
-              required
-            />
-            <textarea
-              placeholder="Escreva seu post..."
-              value={newPost.content}
-              onChange={(e) => setNewPost({ ...newPost, content: e.target.value })}
-              className="post-textarea"
-              required
-            ></textarea>
+            <input type="text" name="titulo" placeholder="Título" value={newPost.titulo} onChange={handleInputChange} className="post-input" required />
+            <textarea name="conteudo" placeholder="Escreva seu post..." value={newPost.conteudo} onChange={handleInputChange} className="post-textarea" required></textarea>
+            <input type="text" name="categoria" placeholder="Categoria" value={newPost.categoria} onChange={handleInputChange} className="post-input" required />
+            <select name="id_imagem" value={newPost.id_imagem} onChange={handleInputChange} className="post-input">
+              <option value="">Selecione uma imagem</option>
+              {images.map((img) => (
+                <option key={img.id} value={img.id}>{img.nome || `Imagem ${img.id}`}</option>
+              ))}
+            </select>
             <button type="submit" className="post-submit-button">Publicar</button>
           </form>
         </div>
       )}
 
       <div className="post-list">
-        {posts.map((post) => (
-          <div key={post.id} className="post-item">
-            <h3>{post.title}</h3>
-            <p>{post.content}</p>
-          </div>
-        ))}
+        {posts.length > 0 ? (
+          posts.map((post) => {
+            const image = images.find((img) => String(img.id) === String(post.id_imagem));
+            console.log(`Post ID: ${post.id}, ID Imagem: ${post.id_imagem}, URL encontrada:`, image?.url_post);
+            return (
+              <div key={post.id} onClick={() => navigate(`/post/${post.id}`)}className="post-item">
+                <h3>{post.titulo}</h3>
+                <p>aperte para ver mais</p>
+                {image?.url_post ? (
+                  <img src={image.url_post} alt="Imagem do post" className="post-image" />
+                ) : (
+                  <p>Imagem não disponível</p>
+                )}
+              </div>
+            );
+          })
+        ) : (
+          <p>Nenhum post encontrado.</p>
+        )}
       </div>
     </div>
   );

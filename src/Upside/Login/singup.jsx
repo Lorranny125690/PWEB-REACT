@@ -4,12 +4,10 @@ import { useEffect } from "react";
 import api from "../services/api"
 
 export const SingUp = () => {
-
   async function getUser(){
-    user = await api.post('/usuarios')
+    user = await api.post('/registro')
     console.log(user)
   }
-
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [nome, setnome] = useState("");
@@ -18,7 +16,7 @@ export const SingUp = () => {
   async function createUser(user) {
     try {
       console.log("Enviando usuário:", user);
-      const response = await api.post("/usuarios", user);
+      const response = await api.post("/registro", user);
       console.log("Usuário cadastrado com sucesso:", response.data);
       alert("Cadastro realizado com sucesso!");
     } catch (error) {
@@ -37,7 +35,6 @@ export const SingUp = () => {
       console.log(user)
       await createUser(user)
     
-
     if (senha !== confirmarSenha) {
       window.alert("Os campos precisam ser os mesmos!");
     }

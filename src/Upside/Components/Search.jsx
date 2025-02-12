@@ -1,24 +1,36 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Icon from './modelos/Icon.png';
 
-const filter = ['comunidade', 'filmes', 'séries'];
+const filter = ['comunidade', 'noticias', 'image'];
 
 export function Searcher() {
   const [busca, setBusca] = useState('');
   const [focus, setFocus] = useState(false);
+  const navigate = useNavigate();
+
+  // Função de redirecionamento para a página correspondente com parâmetro de busca
+  const handleSelectOption = (item) => {
+    setBusca(item);
+    setFocus(false);
+
+    // Redireciona para a página correspondente com o parâmetro de busca
+    if (item === 'comunidade') {
+      navigate(`/comunidades?search=${item}`);
+    } else if (item === 'noticias') {
+      navigate(`/noticias?search=${item}`);
+    } else if (item === 'image') {
+      navigate(`/image?search=${item}`);
+    }
+  };
 
   const filterFiltrados = filter.filter((item) =>
     item.toLowerCase().startsWith(busca.toLowerCase())
   );
 
-  const handleSelectOption = (item) => {
-    setBusca(item);
-    setFocus(false);
-  };
-
   return (
-    <div className="container">
-      <div className="Super-container">
+    <div className="container-pesquisar">
+      <div className="Super-container-pesquisar">
         <div className="logo-container">
           <img src={Icon} alt="Luluzinha Logo" className="logo" />
           <h1 className="title">LULUZINHA</h1>
@@ -51,11 +63,6 @@ export function Searcher() {
             ))}
           </div>
         )}
-      </div>
-
-      {/* Ícone de notificações */}
-      <div className="notification-container">
-        <i className="fa fa-bell notification-icon"></i>
       </div>
     </div>
   );

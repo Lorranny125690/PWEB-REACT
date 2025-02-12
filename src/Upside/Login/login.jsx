@@ -1,37 +1,44 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
+import api from "../services/api";
 
 export const Login = () => {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
 
-  const navigate = useNavigate(); 
-
-  const validarEmail = (email) => {
-    const regexEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-    return regexEmail.test(email);
-  };
-
-  const validarSenha = (senha) => {
-    return senha.length >= 6;
-  };
-
-  const handleSubmit = (e) => {
+  async function handleSubmit(e) {
     e.preventDefault();
-
-    if (!validarEmail(email)) {
-      window.alert("Por favor, insira um email válido!");
-      return;
+    setError("");
+  
+    try {
+      const response = await api.post("/login", { email, senha });
+      
+      console.log("Resposta do login:", response.data);
+  
+      if (response.data.token) {
+        const { token, id, profileImage } = response.data;
+  
+        if (!id) {
+          throw new Error("ID do usuário não foi retornado pela API.");
+        }
+  
+        localStorage.setItem("token", token);
+        localStorage.setItem("usuarioId", id);
+        localStorage.setItem("profileImage", profileImage || "");
+  
+        alert("Login realizado com sucesso!");
+        navigate("/");
+      } else {
+        throw new Error("Nenhum token retornado pelo servidor.");
+      }
+    } catch (error) {
+      console.error("Erro ao autenticar usuário:", error);
+      setError("Erro ao autenticar. Verifique seus dados e tente novamente.");
     }
-
-    if (!validarSenha(senha)) {
-      window.alert("A senha deve ter pelo menos 6 caracteres!");
-      return;
-    }
-
-    console.log("Login realizado com sucesso!");
-  };
+  }  
 
   return (
     <div className="container-login">
@@ -52,6 +59,7 @@ export const Login = () => {
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            required
           />
           <label>Senha</label>
           <input
@@ -59,10 +67,14 @@ export const Login = () => {
             placeholder="Senha"
             value={senha}
             onChange={(e) => setSenha(e.target.value)}
+            required
           />
+          {error && <p className="error-message">{error}</p>}
           <button type="submit">Confirmar</button>
           <a href="#">Esqueceu a senha?</a>
-          <a href="/signup" onClick={(e) => { e.preventDefault(); navigate("/signup"); }}>Inscrever-se</a>
+          <a href="/signup" onClick={(e) => { e.preventDefault(); navigate("/signup"); }}>
+            Inscrever-se
+          </a>
         </form>
       </div>
     </div>
