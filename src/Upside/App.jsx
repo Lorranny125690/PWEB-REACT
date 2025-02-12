@@ -14,8 +14,12 @@ import { Noticias } from './Noticias/Noticias.jsx';
 import { Sidebar } from './Components/sidebar.jsx';
 import { AuthProvider } from "./services/contexts";
 import { PostDetail } from './Post/PostDetail.jsx';
-import { EditProfile } from './Login/EditarPerfil.jsx'
+import { UpdateUser } from './Login/EditarPerfil.jsx'
 import { NoticiaDetalhe } from './Noticias/NoticiaDetail.jsx';
+import { useForm } from "react-hook-form";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 function Homenosingup() {
   return (
@@ -107,13 +111,13 @@ function SignUpPage() {
 function EditarPerfil() {
   return (
     <>
-
+      <Header/>
+      <UpdateUser/>
     </>
   )
 }
 
 function NoticiaDetail() {
-  console.log("Renderizando NoticiasPage...");
   return (
     <>
       <Header />
@@ -125,7 +129,7 @@ function NoticiaDetail() {
 }
 
 function ImagemPage() {
-  console.log("Renderizando NoticiasPage...");
+  console.log("Renderizando...");
   return (
     <>
       <Header />
@@ -136,12 +140,12 @@ function ImagemPage() {
 }
 
 function PostDetail1() {
-  console.log("Renderizando NoticiasPage...");
+  console.log("Renderizando...");
   return (
     <>
       <Header />
       <Searcher />
-      <PostDetail/>
+      <UpdateUser/>
       <Footer />
     </>
   );
@@ -160,6 +164,7 @@ export function App() {
       <Route path="/post/:id" element={<PostDetail />} />
       <Route path="/noticia/:id" element={<NoticiaDetalhe />} />
       <Route path="/image" element={<ImagemPage />} />
+      <Route path="/editarperfil" element={<EditarPerfil />} />
     </Routes>
   );
 }

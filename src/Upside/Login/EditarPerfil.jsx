@@ -1,66 +1,100 @@
-import React, { useState } from "react";
-import './EditarPerfil.css'
+import React, { Component } from "react";
+import api from "../services/api";
+import "./EditarPerfil.css";
 
-export const EditProfile = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    bio: "",
-    avatar: ""
-  });
+export class UpdateUser extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      id: this.getUserId(),
+      nome: "",
+      email: "",
+      senha: "",
+      loading: false,
+      message: ""
+    };
+  }
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  getUserId = () => {
+    return localStorage.getItem("usuarioId") || "";
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Perfil atualizado:", formData);
+  handleChange = (event) => {
+    this.setState({ [event.target.name]: event.target.value });
   };
 
-  return (
-    <div className="edit-profile-container">
-      <h2>Editar Perfil</h2>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Nome:
+  handleSubmit = async (event) => {
+    event.preventDefault();
+    const { id, nome, email, senha } = this.state;
+
+    if (!id) {
+      this.setState({ message: "Erro: ID do usuário não encontrado." });
+      return;
+    }
+
+    this.setState({ loading: true, message: "" });
+    try {
+      await api.put(`/usuarios/${id}`, { nome, email, senha });
+      this.setState({ 
+        nome: "", 
+        email: "", 
+        senha: "", 
+        message: "Usuário atualizado com sucesso!" 
+      });
+    } catch (error) {
+      if (error.response) {
+        if (error.response.status === 404) {
+          this.setState({ message: "Erro: Usuário não encontrado." });
+        } else {
+          this.setState({ message: "Erro ao atualizar usuário." });
+        }
+      } else {
+        this.setState({ message: "Erro de conexão com o servidor." });
+      }
+    } finally {
+      this.setState({ loading: false });
+    }
+  };
+
+  render() {
+    const { nome, email, senha, loading, message } = this.state;
+    return (
+      <div className="container5">
+        <h2 className="5">Atualizar Usuário</h2>
+        {message && <p className="message">{message}</p>}
+        <form onSubmit={this.handleSubmit} className="form">
           <input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            required
+            name="nome"
+            value={nome}
+            onChange={this.handleChange}
+            placeholder="Nome"
+            className="input"
           />
-        </label>
-        <label>
-          Email:
           <input
-            type="email"
             name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
+            value={email}
+            onChange={this.handleChange}
+            placeholder="Email"
+            type="email"
+            className="input"
           />
-        </label>
-        <label>
-          Bio:
-          <textarea
-            name="bio"
-            value={formData.bio}
-            onChange={handleChange}
-          ></textarea>
-        </label>
-        <label>
-          Avatar URL:
           <input
-            type="text"
-            name="avatar"
-            value={formData.avatar}
-            onChange={handleChange}
+            name="senha"
+            value={senha}
+            onChange={this.handleChange}
+            placeholder="Senha"
+            type="password"
+            className="input"
           />
-        </label>
-        <button type="submit">Salvar Alterações</button>
-      </form>
-    </div>
-  );
-};
+          <button
+            type="submit"
+            className="button5"
+            disabled={loading}
+          >
+            {loading ? "Atualizando..." : "Atualizar Usuário"}
+          </button>
+        </form>
+      </div>
+    );
+  }
+}
