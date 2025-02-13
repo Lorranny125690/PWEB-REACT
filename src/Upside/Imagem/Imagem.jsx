@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import api from "../services/api";
+import "./imagem.css";
 
 export const Imagem = () => {
   const [images, setImages] = useState([]);
@@ -25,9 +26,12 @@ export const Imagem = () => {
     if (!newImage) return;
 
     try {
+      console.log(newImage)
       const response = await api.post("/imagens", {
-        url: newImage,
+        url_post: newImage,
         id_usuario: localStorage.getItem("usuarioId"),
+        titulo: "whalter white gremista",
+        categoria: "gremio"
       });
 
       setImages((prevImages) => [...prevImages, response.data]);
@@ -49,14 +53,13 @@ export const Imagem = () => {
         />
         <button type="submit">Adicionar Imagem</button>
       </form>
-      <div className="post-item">
-                {image?.url_post ? (
-                  <img src={image.url_post} alt="Imagem do post" className="post-image" />
-                ) : (
-                  <p>Imagem não disponível</p>
-                )}
-              </div>
-            {}
+      <div id="ImageList">
+        {images.map(e=>{
+            return(
+              <img src={e.url_post} className="ImageExample" />
+            )
+          })}
+      </div>
     </div>
   );
 };

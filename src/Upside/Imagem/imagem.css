@@ -1,0 +1,23 @@
+.ImageExample{
+    width:100%;
+    max-width:600px;
+}
+.image-container{
+    display:flex;
+    justify-content:center;
+    flex-direction:Column;
+    gap:5px;
+    padding:2%;
+}
+#ImageList{
+    gap:2%;
+    width:100%;
+    display:flex;
+    flex-wrap:wrap;
+    margin: auto;
+    padding: 2%;
+    text-align: center;
+    justify-content:center;
+    align-itens:center;
+    gap: 2%;
+}
