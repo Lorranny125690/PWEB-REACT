@@ -56,6 +56,7 @@ export const Imagem = () => {
                   <p>Imagem não disponível</p>
                 )}
               </div>
+            {}
     </div>
   );
 };
