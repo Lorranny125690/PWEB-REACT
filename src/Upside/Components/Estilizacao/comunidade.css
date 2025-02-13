@@ -72,6 +72,7 @@ body {
   display: flex;
   flex-direction: column;
   margin-top: 1%;
+  height: 100%;
 }
 
 .news-grid {
@@ -83,7 +84,8 @@ body {
 }
 
 .news-card {
-  position: relative;
+  display: flex;
+  flex-direction: column;
   background-color: white;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -95,23 +97,16 @@ body {
 
 .news-image {
   width: 100%;
-  height: 100%;
+  height: 60%; /* Define um limite para a imagem */
   object-fit: cover;
-}
-
-.news-time-tag {
-  position: absolute;
-  top: 8px;
-  left: 8px;
-  background-color: #d4008f;
-  color: white;
-  font-size: 0.75rem;
-  padding: 4px 8px;
-  border-radius: 4px;
 }
 
 .news-content {
   padding: 16px;
+  flex-grow: 1; /* Garante que o conteúdo ocupe o espaço restante */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .news-title {

@@ -77,7 +77,7 @@ export const Imagem = () => {
   };
 
   return (
-    <div className="image-container">
+    <div className="image-container6">
       <h2>Galeria de Imagens</h2>
       <form onSubmit={handleAddImage}>
         <input
