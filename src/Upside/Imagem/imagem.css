@@ -1,7 +1,33 @@
-.ImageExample{
+.ImageExampleContainer{
     width:100%;
     max-width:600px;
+    display:flex;
+    flex-direction:column;
+
 }
+.ImageExampleContainer div{
+    padding:20px;
+    display:flex;
+    flex-direction:row;
+    width:100%;
+    gap:10%;
+    justify-content:center;
+}
+.ImageExampleContainer button{
+    width:40%;
+}
+.ImageExampleContainer img{
+    width:100%;
+}
+
+.deleteButton{
+    background-color:#cf0029;
+}
+
+.editButton{
+    background-color:#cf7c00
+}
+
 .image-container{
     display:flex;
     justify-content:center;
