@@ -19,12 +19,25 @@ export const Imagem = () => {
 
     fetchImages();
   }, []);
+  // const handleDeleteImage = async(e)=>{
+  //   e.preventDefault();
 
+  //   let id = e.id;
+
+  //   try{
+  //     console.log(id);
+  //     const response = await api.delete(`/imagens/${id}`)
+  //     console.log(response.data)
+  //     alert("Deletado com sucesso")
+  //   }catch(err){
+  //     console.error("Deletar imagem")
+  //   }
+  // }
   const handleAddImage = async (e) => {
     e.preventDefault();
 
     if (!newImage) return;
-
+  
     try {
       console.log(newImage)
       const response = await api.post("/imagens", {
@@ -56,7 +69,25 @@ export const Imagem = () => {
       <div id="ImageList">
         {images.map(e=>{
             return(
-              <img src={e.url_post} className="ImageExample" />
+              <div className="ImageExampleContainer">
+                <img src={e.url_post} className="ImageExample"  />
+                <h4>{e.titulo}</h4>
+                <div>
+                  <button className="deleteButton" onClick={async()=>{
+                  let id = e.id;
+                  
+                  try{
+                    console.log(id);
+                    const response = await api.delete(`/imagens/${id}`)
+                    console.log(response.data)
+                    alert("Deletado com sucesso")
+                  }catch(err){
+                    console.error("Deletar imagem")
+                  }
+                }}>Deletar</button>
+                  <button className="editButton">Editar</button>
+                </div>
+              </div>
             )
           })}
       </div>
