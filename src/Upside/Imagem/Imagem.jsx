@@ -33,6 +33,28 @@ export const Imagem = () => {
   //     console.error("Deletar imagem")
   //   }
   // }
+
+  // const handleUpdateImage = async(e)=>{
+  //   e.preventDefault();
+  //   let id = e.id;
+
+  //   try{
+  //     const data = {
+  //       titulo:"",
+  //       categoria:""
+  //     }
+  //     data.categoria = prompt("Insira a nova categoria");
+  //     data.titulo = prompt("Insira a nova categoria");
+  //     console.log(id);
+  //     const response = await api.put(`/imagens/${id}`,data)
+  //     console.log(response.data)
+  //     alert("Deletado com sucesso")
+  //   }catch(err){
+  //     console.error("Deletar imagem")
+  //   }
+  // }
+
+
   const handleAddImage = async (e) => {
     e.preventDefault();
 
@@ -75,7 +97,7 @@ export const Imagem = () => {
                 <div>
                   <button className="deleteButton" onClick={async()=>{
                   let id = e.id;
-                  
+
                   try{
                     console.log(id);
                     const response = await api.delete(`/imagens/${id}`)
@@ -85,7 +107,27 @@ export const Imagem = () => {
                     console.error("Deletar imagem")
                   }
                 }}>Deletar</button>
-                  <button className="editButton">Editar</button>
+
+                <button className="editButton" 
+                  onClick={async()=>{
+                  let id = e.id;
+
+                  try{
+                    const data = {
+                      url_post:e.url_post,
+                      titulo:"",
+                      categoria:""
+                    }
+                    data.categoria = prompt("Insira a nova categoria");
+                    data.titulo = prompt("Insira a nova categoria");
+                    console.log(id);
+                    const response = await api.put(`/imagens/${id}`,data)
+                    console.log(response.data)
+                    alert("Atualizado com sucesso")
+                  }catch(err){
+                    console.error("Erro ao atualizar imagem:"+err)
+                  }
+                }}>Editar</button>
                 </div>
               </div>
             )
