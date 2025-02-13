@@ -16,9 +16,9 @@ import { AuthProvider } from "./services/contexts";
 import { PostDetail } from './Post/PostDetail.jsx';
 import { UpdateUser } from './Login/EditarPerfil.jsx'
 import { NoticiaDetalhe } from './Noticias/NoticiaDetail.jsx';
-import { useForm } from "react-hook-form";
-import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Favoritos } from './Login/favoritos.jsx';
+import { Imagem } from './Imagem/Imagem.jsx';
 
 
 function Homenosingup() {
@@ -128,12 +128,24 @@ function NoticiaDetail() {
   );
 }
 
-function ImagemPage() {
+function GaleriaPage() {
   console.log("Renderizando...");
   return (
     <>
       <Header />
       <Searcher />
+      <Footer />
+    </>
+  );
+}
+
+function ImagePage() {
+  console.log("Renderizando...");
+  return (
+    <>
+      <Header />
+      <Searcher />
+      <Imagem/>
       <Footer />
     </>
   );
@@ -151,6 +163,17 @@ function PostDetail1() {
   );
 }
 
+function Favorito() {
+  console.log("Renderizando...");
+  return (
+    <>
+      <Header />
+      <Searcher />
+      <Footer />
+    </>
+  )
+}
+
 export function App() {
   return (
     <Routes>
@@ -163,8 +186,10 @@ export function App() {
       <Route path="/signup" element={<SignUpPage />} />
       <Route path="/post/:id" element={<PostDetail />} />
       <Route path="/noticia/:id" element={<NoticiaDetalhe />} />
-      <Route path="/image" element={<ImagemPage />} />
+      <Route path="/galeria" element={<GaleriaPage />} />
       <Route path="/editarperfil" element={<EditarPerfil />} />
+      <Route path="/favorito" element={<Favorito />} />
+      <Route path="/image" element={<ImagePage />} />
     </Routes>
   );
 }

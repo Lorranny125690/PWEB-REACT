@@ -19,15 +19,15 @@ export const Login = () => {
       console.log("Resposta do login:", response.data);
   
       if (response.data.token) {
-        const { token, id, profileImage } = response.data;
-  
-        if (!id) {
-          throw new Error("ID do usuário não foi retornado pela API.");
-        }
+        const { token, userId, profileImage } = response.data;
+        localStorage.setItem("usuarioId",token)
+        // if (!id) {
+        //   throw new Error("ID do usuário não foi retornado pela API.");
+        // }
   
         localStorage.setItem("token", token);
-        localStorage.setItem("usuarioId", id);
-        localStorage.setItem("profileImage", profileImage || "");
+        localStorage.setItem("usuarioId", userId);
+        // localStorage.setItem("profileImage", profileImage || "");
   
         alert("Login realizado com sucesso!");
         navigate("/");

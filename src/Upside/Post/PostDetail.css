@@ -94,6 +94,25 @@ body {
   background-color: #218838;
 }
 
+.favorito-container {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.favorito-button {
+  background-color: #ffdd57;
+  border: none;
+  padding: 8px 12px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.favorito-button.favorito-ativo {
+  background-color: #ffb400;
+  color: white;
+}
+
 /* Responsividade para dispositivos menores */
 @media (max-width: 768px) {
   .content {

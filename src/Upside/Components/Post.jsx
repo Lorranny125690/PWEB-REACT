@@ -53,8 +53,8 @@ export function Header() {
               {menuVisible && (
                 <div className="dropdown-menu">
                   <Link to="/editarperfil">Editar Perfil</Link>
-                  <Link to="/editar-perfil">Favoritos</Link>
-                  <Link to="/editar-perfil">Galeira</Link>
+                  <Link to="/favorito">Favoritos</Link>
+                  <Link to="/galeria">Galeria</Link>
                   <button onClick={handleLogout}>Logout</button>
                 </div>
               )}

@@ -11,15 +11,15 @@ export const PostDetail = () => {
   const [post, setPost] = useState(null);
   const [images, setImages] = useState([]);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [comments, setComments] = useState([]);  // Estado para armazenar comentários
-  const [newComment, setNewComment] = useState(""); // Estado para o novo comentário
+  const [comments, setComments] = useState([]); 
+  const [newComment, setNewComment] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchPost = async () => {
       try {
         const response = await api.get(`/posts/${id}`);
-        setPost(response.data); // Carrega o post específico
+        setPost(response.data);
       } catch (error) {
         console.error("Erro ao carregar o post:", error);
       }
@@ -28,7 +28,7 @@ export const PostDetail = () => {
     const fetchImages = async () => {
       try {
         const response = await api.get("/imagens");
-        setImages(response.data); // Carrega todas as imagens
+        setImages(response.data); 
       } catch (error) {
         console.error("Erro ao carregar imagens:", error);
       }
@@ -36,8 +36,8 @@ export const PostDetail = () => {
 
     const fetchComments = async () => {
       try {
-        const response = await api.get(`/posts/${id}/comentarios`); // Ajuste conforme seu backend
-        setComments(response.data); // Carrega os comentários
+        const response = await api.get(`/comentarios/${id}`);
+        setComments(response.data);
       } catch (error) {
         console.error("Erro ao carregar comentários:", error);
       }
@@ -53,18 +53,40 @@ export const PostDetail = () => {
 
   const handleAddComment = async (e) => {
     e.preventDefault();
+  
+    if (!newComment.trim()) return;
+  
+    try {
+      const response = await api.post(`/comentarios`, {
+        conteudo: newComment,
+        id_usuario: localStorage.getItem("usuarioId"),
+        id_post: id
+      });
+  
+      setComments((prevComments) => [...prevComments, response.data]); 
+      setNewComment("");
+    } catch (error) {
+      console.error("Erro ao adicionar comentário:", error.response?.data || error);
+    }
+  };
+  
+  const handleAddFavorite = async (e) => {
+    e.preventDefault();
 
-    if (!newComment.trim()) return; // Verifica se o comentário não está vazio
+    const userId = localStorage.getItem("usuarioId")
 
     try {
-      const response = await api.post(`/posts/${id}/comentarios`, {
-        conteudo: newComment,
+      console.log(userId)
+      console.log(id)
+      const response = await api.post(`/favoritos`, {
+        id_usuario: userId,
+        id_post: id
       });
-      setComments((prevComments) => [...prevComments, response.data]); // Atualiza os comentários
-      setNewComment(""); // Limpa o campo do comentário
+  
     } catch (error) {
-      console.error("Erro ao adicionar comentário:", error);
     }
+
+    console.log("Mamãe eu quero: ")
   };
 
   if (!post) return <p>Carregando post...</p>;
@@ -103,7 +125,6 @@ export const PostDetail = () => {
                   ))}
                 </ul>
               )}
-
               {isAuthenticated && (
                 <form onSubmit={handleAddComment}>
                   <textarea
@@ -114,6 +135,10 @@ export const PostDetail = () => {
                   <button type="submit">Comentar</button>
                 </form>
               )}
+              <div className="favorito-container"><button onClick = {handleAddFavorite}
+              type="favorito-button">
+                Favoritar
+              </button></div>
             </div>
           </div>
         </div>
